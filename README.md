@@ -38,9 +38,9 @@ I started with **simple similarity features** built from a single embedding mode
 
 **Embedding models tested:**
 
-1. `all-MiniLM-L6-v2` (384-dim, fast)
-2. `BAAI/bge-base-en-v1.5` (768-dim, stronger semantics)
-3. `intfloat/e5-small-v2` (384-dim, balanced)
+1. `all-MiniLM-L6-v2` 
+2. `BAAI/bge-base-en-v1.5` 
+3. `intfloat/e5-small-v2`
 
 **Baseline feature set (4 features):**
 
@@ -141,7 +141,7 @@ The model relies heavily on **string structure** *and* **semantic similarity**, 
 
 ## 4. Advanced Improvements (XGBoost + Geo features)
 
-I explored a more advanced pipeline to try and reach the internal target of **F1 = 0.93**.
+I explored a different pipeline to try and reach a higher target of **F1 = 0.93**.
 
 ### Extra feature families
 
@@ -152,18 +152,12 @@ I explored a more advanced pipeline to try and reach the internal target of **F1
    - `Geo_Same_City` (<50 km)
    - `Geo_Different_Region` (>50 km)
 
-2. **Category & brand**  
-   - In this sample there are no explicit category/brand columns, so these are safely handled as **dummy zero features** and do not break the pipeline.
 
-3. **Text statistics**
+2. **Text statistics**
    - Name length diff + ratio
    - Address token count diff
    - Jaccard overlap for names and addresses
 
-4. **Email & cross-field features**
-   - Email domain match (dummy zeros here – no email columns)
-   - Whether the name appears inside the address
-   - Whether both names contain numbers (e.g. “7-Eleven”)
 
 Total: **~47 features** (30 original + 17 new).
 
@@ -179,7 +173,7 @@ Model: `xgboost.XGBClassifier` (300 trees, depth 5, subsample 0.9, colsample_byt
 - **Recall:** ~0.91  
 - **AUC:** ~0.94  
 
-This is very close to the Gradient Boosting model; **the dataset may be near its performance ceiling** without richer business features (brand, full categories, better labels).
+This is very close to the Gradient Boosting model
 
 New features that show up in the top 15:
 
