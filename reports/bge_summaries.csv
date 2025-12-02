@@ -1,0 +1,4 @@
+fold,best_t,acc,prec,rec,f1,f1_match,f1_nonmatch,f1_weighted,auc,enc_ms_per_query,model,view
+2.0,0.88,0.782,0.788,0.876,0.829,0.829,0.7,0.778,0.873,2.143,bge-small-en-v1.5,name+address
+2.0,0.867,0.789,0.789,0.886,0.835,0.835,0.708,0.784,0.878,6.755,bge-base-en-v1.5,name+address
+2.0,0.837,0.75,0.752,0.872,0.807,0.807,0.643,0.742,0.828,1.086,bge-small-en-v1.5,name-only
